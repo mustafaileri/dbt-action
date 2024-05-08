@@ -40,6 +40,13 @@ then
   echo trying to use http_path for databricks
   sed -i "s/_http_path_/$(echo $INPUT_HTTP_PATH | sed 's/\//\\\//g')/g" $PROFILES_FILE
   fi
+
+  if [ -n "${HOST}" ]
+  then
+  echo trying to use host
+  sed -i "s/_host_/$(echo $HOST | sed 's/\//\\\//g')/g" $PROFILES_FILE
+  fi
+
 else
   echo "profiles.yml not found"
   exit 1
